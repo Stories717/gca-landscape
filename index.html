@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GCA Competitor Landscape</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-50">
+<div id="root"></div>
+<script type="text/babel">
+
+const data = [
+  {
+    competitor: "Optravis",
+    type: "Purpose-Built",
+    product: "Service Charge Tool + TP Management Tool",
+    gcaCapability: "Full",
+    keyFeatures: [
+      "Group-wide automated cost allocations",
+      "Budget vs. actual + True-Up (monthly/quarterly/year-end)",
+      "Cost centres, allocation keys, mark-ups, stewardship charges, pass-through & lump-sum",
+      "Booking journals, IC Matrix, True-Up & transparency reports",
+      "Upload files for invoicing (SAP SD)",
+      "Data Cleansing module ('Data Cleaner')",
+      "Flow Analyser",
+      "P&L Segmentation",
+      "Single Source of Truth for tax audits",
+    ],
+    erpIntegration: "SAP R/3, S/4 HANA + other ERPs",
+    deployment: "Unknown",
+    strengths: [
+      "End-to-end GCA design",
+      "Implementation in days/weeks",
+      "15+ years development (TP tool)",
+      "High ROI / self-financing",
+      "Reference customer network",
+      "Discussed at Frankfurt event — active in market",
+    ],
+    weaknesses: [
+      "Gaps in demonstrating ROI/value to CFO",
+      "Charging 'silly numbers' — pricing may not be sustainable",
+      "Limited brand presence vs. larger players",
+    ],
+    pricing: "High — described as 'silly numbers'",
+    verdict: "Strong end-to-end product, weak on CFO value story and pricing",
+    tag: "Strong Competitor",
+    tagColor: "bg-red-100 text-red-700",
+  },
+  {
+    competitor: "EXA AG",
+    type: "Purpose-Built",
+    product: "EXA Service Cross Charging (EXA SCC)",
+    gcaCapability: "Full",
+    keyFeatures: [
+      "Intercompany & intracompany service charging",
+      "Service catalogue with direct & indirect costing",
+      "Flexible cost base & mark-up management",
+      "True-up computation with full traceability",
+      "Rule-based charge-out computation",
+      "Benefit test support",
+      "Workflow & approval integration",
+      "SAP Fiori UI — SAP-native, clean-core",
+      "Non-SAP data via flat file / ETL / APIs",
+      "Optional integration with EXA OTP for P&L segmentation",
+      "AI Assistant ('exa nexus')",
+      "Available on-premise or SaaS on SAP BTP",
+    ],
+    erpIntegration: "SAP ERP / S/4 HANA native (SAP-certified); non-SAP via connectors",
+    deployment: "On-premise or SaaS (SAP BTP)",
+    strengths: [
+      "Technically the strongest purpose-built GCA tool in the market",
+      "SAP-native & SAP-certified",
+      "Pre-built — far more ready-to-use than PAPM",
+      "Strong existing customers who are loyal",
+      "AI assistant capability",
+      "Available in SAP Store",
+      "Global support structure (EU, US, APAC)",
+    ],
+    weaknesses: [
+      "SAP go-to-market partner is MSG/PAPM — EXA is on the outside",
+      "CEO 'Frank' is poor at marketing & client engagement",
+      "Weak brand despite strong product",
+      "SAP relationship works against them commercially",
+      "Has underperformed relative to product quality",
+    ],
+    pricing: "Unknown — not publicly listed",
+    verdict: "Best pure-play GCA product but held back by brand, leadership presence & SAP politics",
+    tag: "Strongest Product",
+    tagColor: "bg-orange-100 text-orange-700",
+  },
+  {
+    competitor: "MSG / PAPM",
+    type: "Purpose-Built (ERP-based)",
+    product: "SAP PAPM (Profitability and Performance Management)",
+    gcaCapability: "Partial",
+    keyFeatures: [
+      "SAP-native allocation & profitability calculations",
+      "Official SAP go-to-market OTP solution",
+      "Transfer pricing policy execution",
+      "Intercompany accounting support",
+    ],
+    erpIntegration: "SAP native — deeply embedded",
+    deployment: "On-premise / SAP Cloud",
+    strengths: [
+      "SAP's official recommended solution",
+      "Deep SAP ecosystem integration",
+      "Brand recognition via SAP partnership",
+      "MSG has strong advisory/consulting presence",
+    ],
+    weaknesses: [
+      "Technically inferior to EXA",
+      "UI is poor — 'just a list of stuff, nothing intuitive'",
+      "Requires massive custom build effort — not pre-built",
+      "Requires heavy process documentation",
+      "Wins on brand/relationship, not product quality",
+    ],
+    pricing: "Enterprise — custom / project-based",
+    verdict: "Wins deals through SAP relationship, not product merit. Technically weak but commercially formidable",
+    tag: "Commercial Threat",
+    tagColor: "bg-yellow-100 text-yellow-700",
+  },
+  {
+    competitor: "KPMG",
+    type: "Advisory / Managed Services",
+    product: "Operational Transfer Pricing (OTP) Services",
+    gcaCapability: "Advisory Only",
+    keyFeatures: [
+      "Proprietary processes & tools for intercompany accounting",
+      "Technology-agnostic — helps clients select & implement tools",
+      "Transfer pricing managed services with GenAI",
+      "GCA methodology design & review",
+      "TP documentation & compliance",
+      "Global network of 2,500+ TP professionals",
+    ],
+    erpIntegration: "ERP-agnostic — implements across SAP, Oracle, etc.",
+    deployment: "Consulting engagement / managed service",
+    strengths: [
+      "Global scale and brand trust",
+      "Strong CFO-level relationships",
+      "Technology-neutral",
+      "Deep regulatory knowledge across 100+ countries",
+      "GenAI-augmented managed services",
+    ],
+    weaknesses: [
+      "No dedicated GCA software product",
+      "Consulting-led, not product-led",
+      "Not a direct software competitor",
+      "Big Four mentality — not always collaborative with vendors",
+    ],
+    pricing: "Custom / hourly consulting — expensive",
+    verdict: "Not a direct software competitor. Relevant as a channel/partner or incumbent advisory relationship to displace",
+    tag: "Indirect Competitor",
+    tagColor: "bg-blue-100 text-blue-700",
+  },
+  {
+    competitor: "Alteryx",
+    type: "Horizontal Analytics Platform",
+    product: "Alteryx One (configurable for GCA)",
+    gcaCapability: "Configurable",
+    keyFeatures: [
+      "Drag-and-drop workflow automation canvas",
+      "Multi-ERP data consolidation & standardisation",
+      "Automated allocation & profitability calculations",
+      "Pricing logic encoding for consistent reuse",
+      "Auto-generated journals & documentation",
+      "Full data lineage & audit trail",
+    ],
+    erpIntegration: "ERP-agnostic — connects to any source",
+    deployment: "SaaS / on-premise",
+    strengths: [
+      "Highly flexible — can be configured for GCA",
+      "Lower cost than purpose-built tools",
+      "Used across many finance use cases — broad ROI",
+      "Strong brand in data analytics",
+    ],
+    weaknesses: [
+      "Not purpose-built for GCA",
+      "High key-person risk — whoever builds it owns it",
+      "No dedicated TP/GCA support team",
+      "No standard build — varies entirely by implementer",
+      "Poor for audit storytelling",
+      "No intuitive GCA-specific UI",
+    ],
+    pricing: "One-time build est. £15k–£60k + ~£10k annual maintenance",
+    verdict: "Viable cheap tactical alternative but creates key-person risk, poor audit trail narrative and no ongoing support",
+    tag: "Tactical Alternative",
+    tagColor: "bg-purple-100 text-purple-700",
+  },
+  {
+    competitor: "ARKK Solutions",
+    type: "Flexible Analytics / Workflow Tool",
+    product: "ARKK Automation Platform (OTP)",
+    gcaCapability: "Partial / Configurable",
+    keyFeatures: [
+      "Data-agnostic ingestion — takes data 'as is' from any source/format",
+      "Automated OTP workflow — period-based controlled environment",
+      "Apply any TP model, calculation method or parameters",
+      "Pre-built accelerators for segmented P&L",
+      "AI-powered data quality checks — flags duplicates & gaps",
+      "Full audit trail with annotations & user comments",
+      "Instant reporting — invoices, journal entries, price lists",
+      "PowerBI integration for in-year insights",
+      "Cloud-based — no IT burden, multi-site collaboration",
+      "ISO-27001 certified, SSO authentication",
+      "Agile 5-step implementation methodology",
+      "900+ global clients across tax & regulatory reporting",
+    ],
+    erpIntegration: "ERP-agnostic — ingests from any source; exports to data warehouse",
+    deployment: "Cloud-based SaaS",
+    strengths: [
+      "Purpose-built for tax teams (unlike generic Alteryx)",
+      "Strong UX focus — dedicated Product Design Team",
+      "Data-agnostic — no template or format changes needed",
+      "99% customer satisfaction for support; 85% for implementation",
+      "Award-winning customer support with fast SLA",
+      "Continuous product innovation from client feedback",
+      "900+ global clients — strong brand in tax automation",
+      "Handles large data volumes without spreadsheet crashes",
+      "Low price point — ~£20k/year",
+    ],
+    weaknesses: [
+      "Not a dedicated GCA product — requires configuration",
+      "GCA is a use case, not core product focus (OTP is primary)",
+      "Similar key-person/config risk for complex builds",
+      "Advisor community would not recommend for pure TP head-to-head",
+      "Only recommended if client already uses ARKK for other use cases",
+      "Competes primarily on price and flexibility, not GCA depth",
+    ],
+    pricing: "Very low — ~£20k/year; competes aggressively on price",
+    verdict: "Tax-specific flexible platform — a step above Alteryx but not purpose-built for GCA. Main threat is price and ease of use, not capability depth",
+    tag: "Price Competitor",
+    tagColor: "bg-gray-100 text-gray-600",
+  },
+  {
+    competitor: "Longview",
+    type: "Tax & Finance Platform",
+    product: "Longview Tax (bolt-on TP capability)",
+    gcaCapability: "Minimal / Bolt-on",
+    keyFeatures: [
+      "Tax provision and compliance platform",
+      "Basic transfer pricing bolt-on capability",
+      "Intercompany transaction management",
+    ],
+    erpIntegration: "ERP-agnostic",
+    deployment: "Cloud / on-premise",
+    strengths: [
+      "May already be in client's tech stack",
+      "Convenient bolt-on for existing Longview users",
+      "Established brand in tax technology",
+    ],
+    weaknesses: [
+      "'You would never buy Longview for TP unless you already had it'",
+      "GCA/TP is not a core use case — very basic capability",
+      "Only appropriate where TP needs are simple",
+      "Not a standalone GCA competitor",
+    ],
+    pricing: "Enterprise — bundled with broader Longview platform",
+    verdict: "Not a real GCA competitor. Only relevant as an incumbent bolt-on for existing Longview clients with simple needs",
+    tag: "Marginal Threat",
+    tagColor: "bg-gray-100 text-gray-500",
+  },
+];
+
+function App() {
+  const [selected, setSelected] = React.useState(data[0]);
+  const [filter, setFilter] = React.useState("All");
+
+  const types = ["All","Purpose-Built","Advisory / Managed Services","Horizontal Analytics Platform","Flexible Analytics / Workflow Tool","Tax & Finance Platform"];
+  const filtered = filter === "All" ? data : data.filter(d => d.type === filter);
+
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-900 mb-1">GCA Competitor Landscape</h1>
+          <p className="text-gray-500 text-sm">Group Cost Allocation — Competitive Intelligence Summary</p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+          {[
+            { label: "Total Competitors", value: data.length, color: "bg-white border border-gray-200" },
+            { label: "Purpose-Built GCA", value: data.filter(d => d.gcaCapability === "Full").length, color: "bg-red-50 border border-red-200" },
+            { label: "Configurable / Partial", value: data.filter(d => ["Partial","Configurable","Partial / Configurable"].includes(d.gcaCapability)).length, color: "bg-yellow-50 border border-yellow-200" },
+            { label: "Advisory / Bolt-on", value: data.filter(d => ["Advisory Only","Minimal / Bolt-on"].includes(d.gcaCapability)).length, color: "bg-blue-50 border border-blue-200" },
+          ].map(c => (
+            <div key={c.label} className={`rounded-xl p-4 ${c.color}`}>
+              <div className="text-2xl font-bold text-gray-800">{c.value}</div>
+              <div className="text-xs text-gray-500 mt-1">{c.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-6">
+          <div className="w-56 flex-shrink-0">
+            <div className="mb-3">
+              <select className="w-full text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-600" value={filter} onChange={e => setFilter(e.target.value)}>
+                {types.map(t => <option key={t}>{t}</option>)}
+              </select>
+            </div>
+            <div className="space-y-2">
+              {filtered.map(d => (
+                <button key={d.competitor} onClick={() => setSelected(d)}
+                  className={`w-full text-left rounded-xl px-4 py-3 border transition-all ${selected.competitor === d.competitor ? "bg-white border-gray-300 shadow-sm" : "bg-white border-gray-100 hover:border-gray-200"}`}>
+                  <div className="font-semibold text-sm text-gray-800">{d.competitor}</div>
+                  <div className="mt-1"><span className={`text-xs px-2 py-0.5 rounded-full font-medium ${d.tagColor}`}>{d.tag}</span></div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex-1 bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-6 py-5 border-b border-gray-100 flex items-start justify-between">
+              <div>
+                <div className="flex items-center gap-3">
+                  <h2 className="text-xl font-bold text-gray-900">{selected.competitor}</h2>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${selected.tagColor}`}>{selected.tag}</span>
+                </div>
+                <p className="text-sm text-gray-500 mt-1">{selected.product}</p>
+              </div>
+              <div className="text-right">
+                <div className={`text-xs font-semibold px-3 py-1 rounded-full ${selected.gcaCapability === "Full" ? "bg-green-100 text-green-700" : selected.gcaCapability === "Advisory Only" || selected.gcaCapability === "Minimal / Bolt-on" ? "bg-blue-100 text-blue-700" : "bg-amber-100 text-amber-700"}`}>
+                  GCA: {selected.gcaCapability}
+                </div>
+                <div className="text-xs text-gray-400 mt-1">{selected.type}</div>
+              </div>
+            </div>
+
+            <div className="p-6 grid grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Key GCA Features</h3>
+                <ul className="space-y-1.5">
+                  {selected.keyFeatures.map((f, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-700"><span className="text-green-500 mt-0.5 flex-shrink-0">✓</span>{f}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-5">
+                <div>
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Strengths</h3>
+                  <ul className="space-y-1.5">
+                    {selected.strengths.map((s, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-gray-700"><span className="text-blue-500 mt-0.5 flex-shrink-0">↑</span>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Weaknesses / Gaps</h3>
+                  <ul className="space-y-1.5">
+                    {selected.weaknesses.map((w, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-gray-700"><span className="text-red-400 mt-0.5 flex-shrink-0">↓</span>{w}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-gray-50 rounded-xl p-3">
+                    <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">ERP Integration</div>
+                    <div className="text-sm text-gray-700">{selected.erpIntegration}</div>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-3">
+                    <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Pricing</div>
+                    <div className="text-sm text-gray-700">{selected.pricing}</div>
+                  </div>
+                </div>
+                <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4">
+                  <div className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1">Verdict</div>
+                  <div className="text-sm text-indigo-800 font-medium">{selected.verdict}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</body>
+</html>
